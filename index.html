@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahhala | رحالة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              rahhala: {
+                green: '#2E4A35',
+                orange: '#C76F50',
+                blue: '#537C88',
+                cream: '#F4F4EB',
+                dark: '#1A2E22'
+              }
+            },
+            fontFamily: {
+              cairo: ['Cairo', 'sans-serif'],
+              amiri: ['Amiri', 'serif'],
+            },
+            animation: {
+              'spin-slow': 'spin 8s linear infinite',
+              'orbit': 'orbit 6s linear infinite',
+              'float': 'float 3s ease-in-out infinite',
+              'draw': 'draw 2s ease-out forwards',
+            },
+            keyframes: {
+              orbit: {
+                '0%': { transform: 'rotate(0deg) translateX(120px) rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg) translateX(120px) rotate(-360deg)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #F4F4EB;
+        color: #1A2E22;
+      }
+      .path-draw {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 2.5s ease-out forwards;
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      /* Custom Orbit Animation Implementation for smooth circle path */
+      .orbit-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 240px; /* Diameter of orbit */
+        height: 240px;
+        margin-top: -120px;
+        margin-left: -120px;
+        animation: spin-right 8s linear infinite;
+      }
+      
+      .planet-object {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: -20px;
+        margin-top: -20px;
+        /* Counter rotate to keep object upright if needed, or let it fly like a plane */
+      }
+
+      @keyframes spin-right {
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
